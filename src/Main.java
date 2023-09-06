@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.Writer;
 
 public class Main {
     static Scanner input = new Scanner(System.in);
@@ -42,8 +45,8 @@ public class Main {
                     while (myReader.hasNextLine()) {
                         data = myReader.nextLine();
                     }
-                    biler.add(data);
-                    myReader.close();
+                        biler.add(data);
+                        myReader.close();
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
@@ -51,14 +54,55 @@ public class Main {
         }
         return biler;
     }
+    public static void opretSalg() throws IOException {
+        System.out.println("Indtast kundes fornavn");
+        String fornavn = input.nextLine();
+        System.out.println("Indtast kundes efternavn");
+        String efternavn = input.nextLine();
+        System.out.println("Indtast kundes tlf");
+        String tlf = input.nextLine();
+        System.out.println("Indtast kundes email");
+        String email = input.nextLine();
 
+        Kunde kunde = new Kunde(fornavn,efternavn,tlf,email);
 
+        System.out.println("Indtast Mærke");
+        String mærke = input.nextLine();
+        System.out.println("Indtast Model");
+        String model = input.nextLine();
+        System.out.println("Regnr");
+        String regnr = input.nextLine();
+        System.out.println("km");
+        String km =  input.nextLine();
+        System.out.println("årstal");
+        String årstal = input.nextLine();
+        System.out.println("farve");
+        String farve = input.nextLine();
+
+        Bil bil = new Bil(mærke,model,regnr,årstal,km,farve);
+
+        System.out.println("Medarbejdernavn");
+        String medarbejder = input.nextLine();
+        System.out.println("Dato");
+        String dato = input.nextLine();
+        System.out.println("Pris");
+        String pris = input.nextLine();
+
+        Salg salg = new Salg(bil, medarbejder, dato, pris,kunde);
+        String fileName = "Regnskab.txt";
+        FileWriter fw = new FileWriter(fileName,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(salg.toString()+"\n");
+        bw.close();
+
+    }
 
 
     public static void main(String[] args) throws IOException {
         System.out.println("Velkommen til Vibeke Auto");
         System.out.println("1. Opret ny bil");
         System.out.println("2. Print liste over biler");
+        System.out.println("3. Registrer et salg");
         int brugerInput = input.nextInt();
         String tom = input.nextLine();
         if(brugerInput == 1){
@@ -70,6 +114,10 @@ public class Main {
                 System.out.println(bil);
 
             }
+        } else if (brugerInput == 3) {
+            opretSalg();
+
+
         }
     }
 }

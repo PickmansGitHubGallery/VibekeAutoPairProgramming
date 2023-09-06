@@ -82,4 +82,16 @@ public class Bil {
     public void setFarve(String farve) {
         this.farve = farve;
     }
+
+    @Override
+    public String toString() {
+        return "Bil{" +
+                "mærke='" + mærke + '\'' +
+                ", model='" + model + '\'' +
+                ", regnr='" + regnr + '\'' +
+                ", årstal='" + årstal + '\'' +
+                ", km='" + km + '\'' +
+                ", farve='" + farve + '\'' +
+                '}';
+    }
 }

@@ -42,4 +42,14 @@ public class Kunde {
     public void setMailAdresse(String mailAdresse) {
         this.mailAdresse = mailAdresse;
     }
+
+    @Override
+    public String toString() {
+        return "Kunde{" +
+                "fornavn='" + fornavn + '\'' +
+                ", efternavn='" + efternavn + '\'' +
+                ", telefonnummer='" + telefonnummer + '\'' +
+                ", mailAdresse='" + mailAdresse + '\'' +
+                '}';
+    }
 }
