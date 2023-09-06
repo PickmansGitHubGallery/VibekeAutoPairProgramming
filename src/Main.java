@@ -6,12 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-
+    static Scanner input = new Scanner(System.in);
     public static void opretNyBil() throws IOException {
 
-
-        System.out.println("Indtast en ny bil");
-        Scanner input = new Scanner(System.in);
         System.out.println("Indtast Mærke");
         String mærke = input.nextLine();
         System.out.println("Indtast Model");
@@ -28,12 +25,13 @@ public class Main {
         Bil bil = new Bil(mærke,model,regnr,årstal,km,farve);
         bil.opretBil();
 
+
     }
-    public static ArrayList<String> hentBiler()
+    public static ArrayList<String>printBiler()
     {
         ArrayList<String> biler = new ArrayList<>();
         String data = "";
-        File folder = new File("C:/Users/Kevin/Documents/GitHub/VibekeAutoPairProgramming");
+        File folder = new File("C:\\Users\\Arbejde\\Desktop\\Programmering med Andres\\IpFinderJavaFX\\VibekeAutoPairProgramming");
         File[] listOfFiles = folder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -58,24 +56,20 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        Bil bil = new Bil();
-        bil.setRegnr("1234");
+        System.out.println("Velkommen til Vibeke Auto");
+        System.out.println("1. Opret ny bil");
+        System.out.println("2. Print liste over biler");
+        int brugerInput = input.nextInt();
+        String tom = input.nextLine();
+        if(brugerInput == 1){
+            opretNyBil();
+        } else if (brugerInput == 2) {
+           ArrayList<String> ListeAfBiler = printBiler();
+            for (String bil: ListeAfBiler
+                 ) {
+                System.out.println(bil);
 
-        Bil bil2 = new Bil();
-
-        Bil bil3 = new Bil();
-
-        bil2.setRegnr("555");
-
-        bil3.setRegnr("asdefa2");
-
-        bil.opretBil();
-        bil2.opretBil();
-        bil3.opretBil();
-
-
-        ArrayList<String> minebiler = hentBiler();
-
-        System.out.println(minebiler);
+            }
+        }
     }
 }
